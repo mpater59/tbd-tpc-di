@@ -4,6 +4,6 @@ select
     sk_transaction_date,
     count(*) cnt
 from {{ ref('fact_cash_transactions') }}
-where transaction_timestamp is null
-group by sk_customer_id, sk_account_id
+where amount is null
+group by sk_customer_id, sk_account_id, sk_transaction_date
 having cnt > 0
